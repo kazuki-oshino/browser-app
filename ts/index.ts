@@ -8,6 +8,7 @@ class Application {
             return
         }
         eventListener.add('sample', 'click', button, () => alert('clicked gorilla'))
+        eventListener.remove('sample')
     }
 }
 
