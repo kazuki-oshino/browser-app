@@ -1,8 +1,11 @@
 import {EventListener} from "./EventListener";
 import {Task} from "./Task";
+import {TaskCollection} from "./TaskCollection";
 
 class Application {
     private readonly eventListener = new EventListener()
+    private readonly taskCollection = new TaskCollection()
+
     start() {
         const createForm = document.getElementById('createForm') as HTMLElement
         this.eventListener.add('submit-handler', 'submit', createForm, this.handleSubmit)
@@ -12,11 +15,12 @@ class Application {
         e.preventDefault()
 
         const titleInput = document.getElementById('title') as HTMLInputElement
-        if(!titleInput.value) {
+        if (!titleInput.value) {
             return
         }
-        const task = new Task({ title: titleInput.value})
-        console.log(task)
+        const task = new Task({title: titleInput.value})
+        this.taskCollection.add(task)
+        console.log(this.taskCollection)
     }
 }
 
