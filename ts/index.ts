@@ -46,9 +46,12 @@ class Application {
         const taskId = this.taskRenderer.getId(el)
         if(!taskId) return
 
-        console.log(taskId)
+        const task = this.taskCollection.find(taskId)
+        if (!task) return
+
+        task.update({status: newStatus})
+        this.taskCollection.update(task)
         console.log(sibling)
-        console.log(newStatus)
     }
 }
 
