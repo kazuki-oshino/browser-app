@@ -8,4 +8,8 @@ export class TaskCollection {
         this.tasks.push(task)
     }
 
+    delete(task:Task) {
+        this.tasks = this.tasks.filter(({id}) => id !== task.id)
+    }
+
 }

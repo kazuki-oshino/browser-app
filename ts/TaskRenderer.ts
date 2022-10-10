@@ -10,6 +10,12 @@ export class TaskRenderer {
         return {taskEl, deleteButtonEl}
     }
 
+    remove(task:Task) {
+        const taskEl = document.getElementById(task.id)
+        if (!taskEl) return
+        this.todoList.removeChild(taskEl)
+    }
+
     private render(task: Task) {
         const taskEl = document.createElement('div')
         const spanEl = document.createElement('span')
