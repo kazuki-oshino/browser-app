@@ -39,6 +39,10 @@ class Application {
 
     private handleClickDeleteTask = (task: Task) => {
         if (!window.confirm(`「${task.title}」を削除してもよろしいですか？`)) return
+        this.executeDeleteTask(task)
+    }
+
+    private executeDeleteTask = (task: Task) => {
         this.eventListener.remove(task.id)
         this.taskCollection.delete(task)
         this.taskRenderer.remove(task)
@@ -47,7 +51,7 @@ class Application {
     private handleClickDeleteAllDoneTasks = () => {
         if (!window.confirm('DONEのタスクを一括削除してよろしいですか？')) return
         const doneTasks = this.taskCollection.filter(statusMap.done)
-        console.log(doneTasks)
+        doneTasks.forEach((task) => this.executeDeleteTask(task))
     }
 
     private handleDropAndDrop = (el: Element, sibling: Element | null, newStatus: Status) => {
