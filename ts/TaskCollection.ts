@@ -2,29 +2,29 @@ import {Status, Task} from "./Task";
 
 
 export class TaskCollection {
-    private tasks: Task[] = []
+  private tasks: Task[] = []
 
-    add(task: Task) {
-        this.tasks.push(task)
-    }
+  add(task: Task) {
+    this.tasks.push(task)
+  }
 
-    delete(task:Task) {
-        this.tasks = this.tasks.filter(({id}) => id !== task.id)
-    }
+  delete(task: Task) {
+    this.tasks = this.tasks.filter(({id}) => id !== task.id)
+  }
 
-    find(id: string) {
-        return this.tasks.find((task) => task.id === id)
-    }
+  find(id: string) {
+    return this.tasks.find((task) => task.id === id)
+  }
 
-    update(task: Task) {
-        this.tasks = this.tasks.map((item) => {
-            if (item.id === task.id) return task
-            return item
-        })
-    }
+  update(task: Task) {
+    this.tasks = this.tasks.map((item) => {
+      if (item.id === task.id) return task
+      return item
+    })
+  }
 
-    filter(filterStatus: Status) {
-        return this.tasks.filter(({status}) => status === filterStatus)
-    }
+  filter(filterStatus: Status) {
+    return this.tasks.filter(({status}) => status === filterStatus)
+  }
 
 }
